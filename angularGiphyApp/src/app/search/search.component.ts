@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
+  query : string;
+
   constructor() { }
 
   ngOnInit() {
+    this.query = '';
+  }
+
+  onSubmit() {
+    // TODO: use value of query to ask for gifs
   }
 
 }

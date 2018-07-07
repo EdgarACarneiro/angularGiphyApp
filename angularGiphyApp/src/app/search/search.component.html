@@ -1,3 +1,15 @@
-<p>
-  search works!
-</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a id="pageName" class="navbar-brand">
+      FavGiphy&nbsp;{{diagnostic}}
+      <!--<FontAwesomeIcon icon={faHeart} />-->
+  </a>
+  <form (ngSubmit)="onSubmit()" #searchForm="ngForm">
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Discover Amazing Giphs!" 
+        required [(ngModel)]="query" name="searchQuery"/>
+    </div>
+    <button type="submit" class="button search-btn">
+        Search
+    </button>
+  </form>
+</nav>

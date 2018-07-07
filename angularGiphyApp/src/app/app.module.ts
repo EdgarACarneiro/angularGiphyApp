@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule }   from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { FunctionalitiesComponent } from './functionalities/functionalities.component';
@@ -11,10 +12,11 @@ import { GiphsContainerComponent } from './giphs-container/giphs-container.compo
     AppComponent,
     FunctionalitiesComponent,
     SearchComponent,
-    GiphsContainerComponent
+    GiphsContainerComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
