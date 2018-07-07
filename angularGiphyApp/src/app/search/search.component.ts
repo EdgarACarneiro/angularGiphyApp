@@ -17,6 +17,7 @@ export class SearchComponent implements OnInit {
 
   onSubmit() {
     // TODO: use value of query to ask for gifs
+    console.log(this.query);
   }
 
 }
