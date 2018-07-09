@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-giphs-container',
@@ -7,18 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GiphsContainerComponent implements OnInit {
 
-  icon : string;
-  gifs : string[];
-  // Name of binded function to be triggered (?) ou entao cenas com serviçoes, tenho de ver como fazer isto em angular
-  actionFnc : string;
+  @Input() icon : string;
+  @Input() gifs : string[];
+  // Name of binded function to be triggered (?) ou entao cenas com serviços, tenho de ver como fazer isto em angular
+  @Input() actionFnc : Function;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  onGifClick() {
-    // TODO sth with the action that it will receive
+  onGifClick(gif : string) {
+    this.actionFnc(gif);
   }
 
 }

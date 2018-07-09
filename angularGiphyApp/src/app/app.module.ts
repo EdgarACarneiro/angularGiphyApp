@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { FunctionalitiesComponent } from './functionalities/functionalities.component';
 import { SearchComponent } from './search/search.component';
 import { GiphsContainerComponent } from './giphs-container/giphs-container.component';
+import { FeedComponent } from './feed/feed.component';
 
 const appRoutes: Routes = [
   { 
@@ -22,7 +23,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'trending',
-    component: GiphsContainerComponent,
+    component: FeedComponent,
     data: {title: 'FavGiphy: Trending'}
   },
   { 
@@ -43,6 +44,7 @@ const appRoutes: Routes = [
     FunctionalitiesComponent,
     SearchComponent,
     GiphsContainerComponent,
+    FeedComponent,
   ],
   imports: [
     RouterModule.forRoot(

@@ -24,6 +24,8 @@ export class FavoritesService {
     } else {
         // Sorry! No Web Storage support..
     }
+
+    return this.favorites;
   }
 
   //TODO: Missing adittion and remotion of gifs here!

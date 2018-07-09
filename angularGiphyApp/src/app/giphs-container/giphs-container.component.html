@@ -1,6 +1,6 @@
 <div class="grid" *ngFor="let gif of gifs">
   <figure
-    (click)="onGifClick()"
+    (click)="onGifClick(gif)"
     class="effect-sarah">
     <span>
       <img [src]="gif" alt="A gif image" />

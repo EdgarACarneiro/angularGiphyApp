@@ -5,14 +5,13 @@ import { GiphyAPIService } from './giphy-api.service';
   providedIn: 'root'
 })
 export class FeedService {
-  api : GiphyAPIService;
   GIFS_STATIC_OFFSET : number = 25;
 
   gifs : string[];
   gifsOffset : number;
 
-  constructor(api :  GiphyAPIService) {
-    this.api = api;
+  constructor(private api :  GiphyAPIService) {
+    this.gifs = [];
     this.gifsOffset = 0;
   }
 
@@ -21,6 +20,7 @@ export class FeedService {
       this.api.getTrending(this.gifsOffset)
     );
     this.gifsOffset += this.GIFS_STATIC_OFFSET;
+    return this.gifs;
   }
 
   loadSearch(query : string) {
@@ -28,5 +28,6 @@ export class FeedService {
       this.api.getSearched(query, this.gifsOffset)
     );
     this.gifsOffset += this.GIFS_STATIC_OFFSET;
+    return this.gifs;
   }
 }

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+var GphApiClient = require('giphy-js-sdk-core');
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +9,6 @@ export class GiphyAPIService {
   giphy: any;
 
   constructor() {
-    let System : any;
-    var GphApiClient = System.import('giphy-js-sdk-core');
     this.giphy = GphApiClient("8XADJBZWvzB75qIDyCpfWLbnE5otD7wG");
   }
 
