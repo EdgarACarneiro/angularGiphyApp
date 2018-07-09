@@ -21,18 +21,18 @@ const appRoutes: Routes = [
     data: { title: 'FavGiphy: Favorites' }
   },
   {
-    path: 'fresh',
+    path: 'trending',
     component: GiphsContainerComponent,
-    data: {title: 'FavGiphy: Fresh'}
+    data: {title: 'FavGiphy: Trending'}
   },
   { 
     path: '',
-    redirectTo: '/fresh',
+    redirectTo: '/trending',
     pathMatch: 'full'
   },
   {
     path: '**',
-    redirectTo: '/fresh'
+    redirectTo: '/trending'
   }
 ];
 
