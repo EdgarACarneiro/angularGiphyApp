@@ -1,32 +1,15 @@
-import { Injectable } from '@angular/core';
-import { GiphyAPIService } from './giphy-api.service';
+import { TestBed, inject } from '@angular/core/testing';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class FeedService {
-  api : GiphyAPIService;
-  GIFS_STATIC_OFFSET : number = 25;
+import { FeedService } from './feed.service';
 
-  gifs : string[];
-  gifsOffset : number;
+describe('FeedService', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [FeedService]
+    });
+  });
 
-  constructor(api :  GiphyAPIService) {
-    this.api = api;
-    this.gifsOffset = 0;
-  }
-
-  loadFeed() {
-    this.gifs.concat(
-      this.api.getTrending(this.gifsOffset)
-    );
-    this.gifsOffset += this.GIFS_STATIC_OFFSET;
-  }
-
-  loadSearch(query : string) {
-    this.gifs.concat(
-      this.api.getSearched(query, this.gifsOffset)
-    );
-    this.gifsOffset += this.GIFS_STATIC_OFFSET;
-  }
-}
+  it('should be created', inject([FeedService], (service: FeedService) => {
+    expect(service).toBeTruthy();
+  }));
+});
