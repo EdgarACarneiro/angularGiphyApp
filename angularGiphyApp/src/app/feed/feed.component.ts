@@ -16,7 +16,6 @@ export class FeedComponent implements OnInit {
   constructor(private feedService : FeedService) {
     this.icon = "heart";
     this.gifs = new Observable;
-    //this.gifs = this.feedService.gifs;
   }
 
   ngOnInit() {

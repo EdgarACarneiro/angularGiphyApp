@@ -36,7 +36,7 @@ export class GiphyAPIService {
     );
   }
 
-  getSearched(query : string, offset : number): Observable<String> {
+  getSearched(query : string, offset : number): Observable<String[]> {
     if (query.trim() === "")
       return;
 

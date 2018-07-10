@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { GiphyAPIService } from './giphy-api.service';
 import { Observable } from 'rxjs';
+import 'rxjs/add/operator/concat';
 
 @Injectable({
   providedIn: 'root'
@@ -12,27 +13,32 @@ export class FeedService {
   gifsOffset : number;
 
   constructor(private api :  GiphyAPIService) {
-    this.gifs = new Observable;
+    this.gifs = null;
     this.gifsOffset = 0;
   }
 
   loadFeed() {
-    console.log("yey");
-    console.log(this.api.getTrending(this.gifsOffset));
-    return this.api.getTrending(this.gifsOffset);
-    /*this.gifs.concat(
-      this.api.getTrending(this.gifsOffset)
-    );*/
-    //this.gifsOffset += this.GIFS_STATIC_OFFSET;
-    //return this.gifs;
+    let newGifs = this.gifs = this.api.getTrending(this.gifsOffset);
+    return this.updateGifs(newGifs);
   }
 
   loadSearch(query : string) {
-    return this.api.getSearched(query, this.gifsOffset)
-    /*this.gifs.concat(
-      this.api.getSearched(query, this.gifsOffset)
-    );
+    let newGifs = this.api.getSearched(query, this.gifsOffset);
+    return this.updateGifs(newGifs);
+  }
+
+  updateGifs(newGifs : Observable<String[]>) {
+    if (this.gifs == null)
+      this.gifs = newGifs;
+    else
+      this.gifs.concat(newGifs);
+
     this.gifsOffset += this.GIFS_STATIC_OFFSET;
-    return this.gifs;*/
+    return this.gifs;
+  }
+
+  resetGifs() {
+    this.gifs = null;
+    this.gifsOffset = 0;
   }
 }
