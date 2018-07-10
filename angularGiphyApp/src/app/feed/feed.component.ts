@@ -19,8 +19,12 @@ export class FeedComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.feedService.resetGifs;
     this.gifs = this.feedService.loadFeed();
-    console.log("PLOXXX"); 
+  }
+
+  scroll() {
+    this.gifs = this.feedService.loadFeed();
   }
 
 }

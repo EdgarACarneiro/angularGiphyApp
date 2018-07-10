@@ -9,11 +9,12 @@ import { FunctionalitiesComponent } from './functionalities/functionalities.comp
 import { SearchComponent } from './search/search.component';
 import { GiphsContainerComponent } from './giphs-container/giphs-container.component';
 import { FeedComponent } from './feed/feed.component';
+import { SearchFeedComponent } from './search-feed/search-feed.component';
 
 const appRoutes: Routes = [
   { 
-    path: 'search?=:id',
-    component: GiphsContainerComponent,
+    path: 'search/:query',
+    component: SearchFeedComponent,
     data: {title: 'FavGiphy: Search'}
   },
   { 
@@ -45,6 +46,7 @@ const appRoutes: Routes = [
     SearchComponent,
     GiphsContainerComponent,
     FeedComponent,
+    SearchFeedComponent,
   ],
   imports: [
     RouterModule.forRoot(
