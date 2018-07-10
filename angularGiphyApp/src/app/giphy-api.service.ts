@@ -20,9 +20,7 @@ export class GiphyAPIService {
     //let gifs : string[] = [];
 
     return Observable.from(
-      this.giphy.trending("gifs", {"offset" : offset}).map(response => {
-        console.log("fds");
-      })
+      this.giphy.trending("gifs", {"offset" : offset}) 
     );
     /*.map(res => {
       return res;

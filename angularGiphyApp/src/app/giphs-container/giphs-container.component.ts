@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class GiphsContainerComponent implements OnInit {
 
   @Input() icon : string;
-  @Input() gifs : Observable<any>
+  @Input() gifs : Observable<String[]>
   // Name of binded function to be triggered (?) ou entao cenas com serviços, tenho de ver como fazer isto em angular
   @Input() actionFnc : Function;
 

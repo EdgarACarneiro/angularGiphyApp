@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class FeedComponent implements OnInit {
 
   icon : string;
-  gifs : Observable<any>;
+  gifs : Observable<String[]>;
   @Input() action : Function;
 
   constructor(private feedService : FeedService) {

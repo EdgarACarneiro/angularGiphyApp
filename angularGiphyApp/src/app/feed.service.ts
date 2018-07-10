@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GiphyAPIService } from './giphy-api.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +16,17 @@ export class FeedService {
     this.gifsOffset = 0;
   }
 
-  loadFeed() {
+  loadFeed(): Observable<String[]> {
     console.log("yey");
     console.log(this.api.getTrending(this.gifsOffset));
-    return this.api.getTrending(this.gifsOffset);
+    return this.api.getTrending(this.gifsOffset).map(res => {
+      console.log("res");
+      console.log(res.data);  
+      return res.data.map(gif => {
+        console.log(gif.url);
+        return gif.images.fixed_height_downsampled.gif_url;
+      });
+    });
     /*this.gifs.concat(
       this.api.getTrending(this.gifsOffset)
     );*/
