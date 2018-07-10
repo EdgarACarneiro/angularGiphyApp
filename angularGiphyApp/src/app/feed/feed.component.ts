@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FeedService } from '../feed.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-feed',
@@ -9,18 +10,18 @@ import { FeedService } from '../feed.service';
 export class FeedComponent implements OnInit {
 
   icon : string;
-  gifs : String[];
+  gifs : Observable<any>;
   @Input() action : Function;
 
   constructor(private feedService : FeedService) {
     this.icon = "heart";
-    this.gifs = this.feedService.gifs;
+    this.gifs = new Observable;
+    //this.gifs = this.feedService.gifs;
   }
 
   ngOnInit() {
-    this.feedService.loadFeed();
-    console.log("PLOXXX");
-    
+    this.gifs = this.feedService.loadFeed();
+    console.log("PLOXXX"); 
   }
 
 }

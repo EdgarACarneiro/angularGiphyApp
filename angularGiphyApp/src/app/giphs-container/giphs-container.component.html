@@ -1,4 +1,4 @@
-<div class="grid" *ngFor="let gif of gifs">
+<div class="grid" *ngFor="let gif of gifs | async">
   <figure
     (click)="onGifClick(gif)"
     class="effect-sarah">

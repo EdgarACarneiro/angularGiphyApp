@@ -13,15 +13,17 @@ export class FeedService {
   constructor(private api :  GiphyAPIService) {
     this.gifs = [];
     this.gifsOffset = 0;
-    this.reportFunc.bind(this.reportFunc);
   }
 
   loadFeed() {
-    this.gifs.concat(
-      this.api.getTrending(this.gifsOffset, this.reportFunc)
-    );
-    this.gifsOffset += this.GIFS_STATIC_OFFSET;
-    return this.gifs;
+    console.log("yey");
+    console.log(this.api.getTrending(this.gifsOffset));
+    return this.api.getTrending(this.gifsOffset);
+    /*this.gifs.concat(
+      this.api.getTrending(this.gifsOffset)
+    );*/
+    //this.gifsOffset += this.GIFS_STATIC_OFFSET;
+    //return this.gifs;
   }
 
   loadSearch(query : string) {
@@ -30,9 +32,5 @@ export class FeedService {
     );
     this.gifsOffset += this.GIFS_STATIC_OFFSET;
     return this.gifs;
-  }
-
-  reportFunc(gifs : String[]) {
-    this.gifs = gifs;
   }
 }

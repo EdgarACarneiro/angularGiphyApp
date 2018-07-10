@@ -1,4 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/from';
+
 var GphApiClient = require('giphy-js-sdk-core');
 
 @Injectable({
@@ -12,21 +16,34 @@ export class GiphyAPIService {
     this.giphy = GphApiClient("8XADJBZWvzB75qIDyCpfWLbnE5otD7wG");
   }
 
-  getTrending(offset : number, callFunc : Function): any{
-    let gifs : string[] = [];
+  plz(offset : number): Observable<any>{
+    //let gifs : string[] = [];
 
-    this.giphy.trending("gifs", { "offset": offset })
+    return Observable.from(
+      this.giphy.trending("gifs", {"offset" : offset}).map(response => {
+        console.log("fds");
+      })
+    );
+    /*.map(res => {
+      return res;
+    });*/
+    /*this.giphy.trending("gifs", { "offset": offset })
     .then((response) => {
       console.log("FDS");
       console.log(response);
       response.data.forEach((gif) => {
           gifs.push(gif.images.fixed_height_downsampled.gif_url);
       });
-      callFunc(gifs);
+      return gifs;
     })
     .catch((err) => {
         // Maybe Alert Danger
-    });
+        return null;
+    });*/
+  }
+
+  getTrending(offset : number) {
+    return this.plz(offset);
   }
 
   getSearched(query : string, offset : number) {

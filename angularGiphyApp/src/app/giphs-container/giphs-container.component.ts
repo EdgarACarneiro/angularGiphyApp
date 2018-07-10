@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-giphs-container',
@@ -8,7 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class GiphsContainerComponent implements OnInit {
 
   @Input() icon : string;
-  @Input() gifs : string[];
+  @Input() gifs : Observable<any>
   // Name of binded function to be triggered (?) ou entao cenas com serviços, tenho de ver como fazer isto em angular
   @Input() actionFnc : Function;
 
