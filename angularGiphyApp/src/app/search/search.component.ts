@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-search',
@@ -9,15 +10,14 @@ export class SearchComponent implements OnInit {
 
   query : string;
 
-  constructor() { }
+  constructor(private location: Location) {}
 
   ngOnInit() {
     this.query = '';
   }
 
   onSubmit() {
-    // TODO: use value of query to ask for gifs
-    console.log(this.query);
+    location.replace("/search/" + this.query);
   }
 
 }

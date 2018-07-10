@@ -10,6 +10,7 @@ import { SearchComponent } from './search/search.component';
 import { GiphsContainerComponent } from './giphs-container/giphs-container.component';
 import { FeedComponent } from './feed/feed.component';
 import { SearchFeedComponent } from './search-feed/search-feed.component';
+import { FavFeedComponent } from './fav-feed/fav-feed.component';
 
 const appRoutes: Routes = [
   { 
@@ -47,6 +48,7 @@ const appRoutes: Routes = [
     GiphsContainerComponent,
     FeedComponent,
     SearchFeedComponent,
+    FavFeedComponent,
   ],
   imports: [
     RouterModule.forRoot(
