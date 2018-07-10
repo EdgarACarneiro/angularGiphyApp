@@ -1,0 +1,16 @@
+.navbar {
+    margin-bottom: 0;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+}
+
+.search-btn {
+    font-weight: 100;
+    font-size: 14px;
+    margin: 0;
+    margin-left: 1rem;
+}
+
+#pageName {
+    color: rgb(238, 9, 9);
+}
