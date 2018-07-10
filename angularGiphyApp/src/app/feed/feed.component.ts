@@ -9,17 +9,18 @@ import { FeedService } from '../feed.service';
 export class FeedComponent implements OnInit {
 
   icon : string;
-  gifs : string[];
+  gifs : String[];
   @Input() action : Function;
 
   constructor(private feedService : FeedService) {
     this.icon = "heart";
+    this.gifs = this.feedService.gifs;
   }
 
   ngOnInit() {
-    this.gifs = this.feedService.loadFeed();
-    console.log(this.feedService);
-    console.log(this.gifs);
+    this.feedService.loadFeed();
+    console.log("PLOXXX");
+    
   }
 
 }

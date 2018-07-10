@@ -12,19 +12,21 @@ export class GiphyAPIService {
     this.giphy = GphApiClient("8XADJBZWvzB75qIDyCpfWLbnE5otD7wG");
   }
 
-  getTrending(offset : number) {
-    let gifs : string[];
+  getTrending(offset : number, callFunc : Function): any{
+    let gifs : string[] = [];
 
     this.giphy.trending("gifs", { "offset": offset })
     .then((response) => {
-        response.data.forEach((gif) => {
-            gifs.push(gif.images.fixed_height_downsampled.gif_url);
-        })
+      console.log("FDS");
+      console.log(response);
+      response.data.forEach((gif) => {
+          gifs.push(gif.images.fixed_height_downsampled.gif_url);
+      });
+      callFunc(gifs);
     })
     .catch((err) => {
         // Maybe Alert Danger
     });
-    return gifs;
   }
 
   getSearched(query : string, offset : number) {
