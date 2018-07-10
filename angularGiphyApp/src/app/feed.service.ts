@@ -8,25 +8,18 @@ import { Observable } from 'rxjs';
 export class FeedService {
   GIFS_STATIC_OFFSET : number = 25;
 
-  gifs : String[];
+  gifs : Observable<String[]>;
   gifsOffset : number;
 
   constructor(private api :  GiphyAPIService) {
-    this.gifs = [];
+    this.gifs = new Observable;
     this.gifsOffset = 0;
   }
 
-  loadFeed(): Observable<String[]> {
+  loadFeed() {
     console.log("yey");
     console.log(this.api.getTrending(this.gifsOffset));
-    return this.api.getTrending(this.gifsOffset).map(res => {
-      console.log("res");
-      console.log(res.data);  
-      return res.data.map(gif => {
-        console.log(gif.url);
-        return gif.images.fixed_height_downsampled.gif_url;
-      });
-    });
+    return this.api.getTrending(this.gifsOffset);
     /*this.gifs.concat(
       this.api.getTrending(this.gifsOffset)
     );*/
@@ -35,10 +28,11 @@ export class FeedService {
   }
 
   loadSearch(query : string) {
-    this.gifs.concat(
+    return this.api.getSearched(query, this.gifsOffset)
+    /*this.gifs.concat(
       this.api.getSearched(query, this.gifsOffset)
     );
     this.gifsOffset += this.GIFS_STATIC_OFFSET;
-    return this.gifs;
+    return this.gifs;*/
   }
 }

@@ -16,49 +16,34 @@ export class GiphyAPIService {
     this.giphy = GphApiClient("8XADJBZWvzB75qIDyCpfWLbnE5otD7wG");
   }
 
-  plz(offset : number): Observable<any>{
-    //let gifs : string[] = [];
-
+  getTrendingObs(offset : number): Observable<any> {
     return Observable.from(
       this.giphy.trending("gifs", {"offset" : offset}) 
     );
-    /*.map(res => {
-      return res;
-    });*/
-    /*this.giphy.trending("gifs", { "offset": offset })
-    .then((response) => {
-      console.log("FDS");
-      console.log(response);
-      response.data.forEach((gif) => {
-          gifs.push(gif.images.fixed_height_downsampled.gif_url);
+  }
+
+  getTrending(offset : number): Observable<String[]> {
+    return this.getTrendingObs(offset).map(res => {
+      return res.data.map(gif => {
+        return gif.images.fixed_height_downsampled.gif_url;
       });
-      return gifs;
-    })
-    .catch((err) => {
-        // Maybe Alert Danger
-        return null;
-    });*/
+    });
   }
 
-  getTrending(offset : number) {
-    return this.plz(offset);
+  getSearchedObs(query : string, offset : number): Observable<any> {
+    return Observable.from(
+      this.giphy.search("gifs", { "q" : query, "offset": offset })
+    );
   }
 
-  getSearched(query : string, offset : number) {
-    let gifs : string[];
-
+  getSearched(query : string, offset : number): Observable<String> {
     if (query.trim() === "")
-      return gifs;
+      return;
 
-    this.giphy.search("gifs", { "q" : query, "offset": offset })
-    .then((response) => {
-        response.data.forEach((gif) => {
-            gifs.push(gif.images.fixed_height_downsampled.gif_url);
-        })
-    })
-    .catch((err) => {
-        // Maybe Alert Danger
-    }); 
-    return gifs;
+    return this.getSearchedObs(query, offset).map(res => {
+      return res.data.map(gif => {
+        return gif.images.fixed_height_downsampled.gif_url;
+      });
+    });
   }
 }
