@@ -11,13 +11,17 @@ export class FavFeedComponent implements OnInit {
 
   icon : string;
   gifs : String[];
+  action : Function;
 
   constructor(private favService : FavoritesService) {
     this.icon = "times";
     this.gifs = new Array<String>();
+    this.action = favService.bindedRem;
   }
 
   ngOnInit() {
+    console.log("rip");
+    console.log(this.favService);
     this.gifs = this.favService.loadFavorites();
   }
 

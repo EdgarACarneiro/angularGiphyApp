@@ -20,7 +20,7 @@ const appRoutes: Routes = [
   },
   { 
     path: 'favorites',
-    component: GiphsContainerComponent,
+    component: FavFeedComponent,
     data: { title: 'FavGiphy: Favorites' }
   },
   {

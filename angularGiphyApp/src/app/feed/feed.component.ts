@@ -17,7 +17,7 @@ export class FeedComponent implements OnInit {
   constructor(private feedService : FeedService, private favService : FavoritesService,) {
     this.icon = "heart";
     this.gifs = new Observable;
-    this.action = favService.addFav;
+    this.action = favService.bindedAdd;
   }
 
   ngOnInit() {

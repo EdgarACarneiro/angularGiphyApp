@@ -22,7 +22,7 @@ export class SearchFeedComponent implements OnInit {
     this.query = this.route.snapshot.paramMap.get('query');
     this.icon = "heart";
     this.gifs = new Observable;
-    this.action = favService.addFav;
+    this.action = favService.bindedAdd;
   }
 
   ngOnInit() {

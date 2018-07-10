@@ -10,12 +10,15 @@ export class FavoritesService {
   favorites : string[];
   favOffset : number;
 
+  bindedAdd : Function;
+  bindedRem : Function;
+
   constructor() {
-    this.favorites = [];
+    this.favorites = new Array<string>();
     this.favOffset = 0;
 
-    this.addFav.bind(this.addFav);
-    this.removeFav.bind(this.removeFav);
+    this.bindedAdd = this.addFav.bind(this);
+    this.bindedRem = this.removeFav.bind(this);
   }
 
   loadFavorites() {
@@ -36,38 +39,25 @@ export class FavoritesService {
   addFav(gif : string) {
     console.log("being called");
     console.log(gif);
+    console.log(this);
+    let index = this.favorites.indexOf(gif);
+
+    // Meaning gif exists, so pushing it to the top
+    if (index !== -1)
+      this.favorites.splice(index, 1);
+    this.favorites.unshift(gif);
+
+    localStorage.setItem("favorites", this.favorites.toString());
   }
 
   removeFav(gif : string) {
     console.log("being removed");
     console.log(gif);
-  }
-  /*addFavorite(event, gif) {
-    let index = this.state.favorites.indexOf(gif);
-    let newArray = this.state.favorites.slice();
-
-    // Meaning gif exists, so pushing it to the top
-    if (index !== -1)
-        newArray.splice(index, 1);
-    newArray.unshift(gif);
-
-    this.setState({
-        favorites: newArray
-    });
-    localStorage.setItem("favorites", newArray);
-  }
-
-  removeFavorite(event, gif) {
-    let index = this.state.favorites.indexOf(gif);
+    let index = this.favorites.indexOf(gif);
 
     if (index > -1) {
-        let newArray = this.state.favorites.slice();
-        newArray.splice(index, 1);
-
-        this.setState({
-            favorites: newArray
-        });
-        localStorage.setItem("favorites", newArray);
+      this.favorites.splice(index, 1);
+      localStorage.setItem("favorites", this.favorites.toString());
     }
-  }*/
+  }
 }
