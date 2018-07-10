@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { FeedService } from '../feed.service';
 import { Observable } from 'rxjs';
+import { FavoritesService } from '../favorites.service';
 
 @Component({
   selector: 'app-search-feed',
@@ -13,12 +14,15 @@ export class SearchFeedComponent implements OnInit {
   icon : string;
   query : string;
   gifs : Observable<String[]>;
-  @Input() action : Function;
+  action : Function;
 
-  constructor(private feedService : FeedService, private route: ActivatedRoute) {
+  constructor(private feedService : FeedService,
+    private favService : FavoritesService,
+    private route: ActivatedRoute) {
     this.query = this.route.snapshot.paramMap.get('query');
     this.icon = "heart";
     this.gifs = new Observable;
+    this.action = favService.addFav;
   }
 
   ngOnInit() {
