@@ -12,7 +12,6 @@ export class FeedComponent implements OnInit {
 
   icon : string;
   gifs : Observable<String[]>;
-  action : Function;
 
   constructor(private feedService : FeedService, private favService : FavoritesService,) {
     this.icon = "heart";

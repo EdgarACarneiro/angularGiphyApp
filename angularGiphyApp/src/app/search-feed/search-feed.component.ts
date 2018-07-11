@@ -14,7 +14,6 @@ export class SearchFeedComponent implements OnInit {
   icon : string;
   query : string;
   gifs : Observable<String[]>;
-  action : Function;
 
   constructor(private feedService : FeedService,
     private favService : FavoritesService,

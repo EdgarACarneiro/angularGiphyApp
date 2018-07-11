@@ -10,7 +10,7 @@ import 'rxjs/add/operator/mergeAll';
 export class FeedService {
   GIFS_STATIC_OFFSET : number = 25;
 
-  gifs : Observable<    String[]>;
+  gifs : Observable<String[]>;
   gifsOffset : number;
 
   constructor(private api :  GiphyAPIService) {

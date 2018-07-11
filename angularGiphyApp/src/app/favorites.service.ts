@@ -13,6 +13,7 @@ export class FavoritesService {
   constructor() {
     this.favorites = new Array<string>();
     this.favOffset = 0;
+    this.loadFavorites();
   }
 
   loadFavorites() {
@@ -31,8 +32,6 @@ export class FavoritesService {
   }
 
   addFav(gif : string) {
-    console.log("being called");
-    console.log(gif);
     console.log(this);
     let index = this.favorites.indexOf(gif);
 
