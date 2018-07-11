@@ -10,11 +10,11 @@ import 'rxjs/add/operator/mergeAll';
 export class FeedService {
   GIFS_STATIC_OFFSET : number = 25;
 
-  gifs : Observable<String[]>;
+  gifs$ : Observable<String[]>;
   gifsOffset : number;
 
   constructor(private api :  GiphyAPIService) {
-    this.gifs = null;
+    this.gifs$ = null;
     this.gifsOffset = 0;
   }
 
@@ -29,18 +29,18 @@ export class FeedService {
   }
 
   updateGifs(newGifs : Observable<String[]>) {
-    if (this.gifs == null)
-      this.gifs = newGifs;
+    if (this.gifs$ == null)
+      this.gifs$ = newGifs;
     else
       //this.gifs = forkJoin(this.gifs, newGifs).mergeAll();
-      this.gifs = concat(this.gifs, newGifs);
+      this.gifs$ = concat(this.gifs$, newGifs);
 
     this.gifsOffset += this.GIFS_STATIC_OFFSET;
-    return this.gifs;
+    return this.gifs$;
   }
 
   resetGifs() {
-    this.gifs = null;   
+    this.gifs$ = null;   
     this.gifsOffset = 0;
   }
 }

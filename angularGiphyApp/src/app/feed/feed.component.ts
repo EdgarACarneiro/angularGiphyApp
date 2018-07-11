@@ -11,20 +11,20 @@ import { FavoritesService } from '../favorites.service';
 export class FeedComponent implements OnInit {
 
   icon : string;
-  gifs : Observable<String[]>;
+  gifs$ : Observable<String[]>;
 
   constructor(private feedService : FeedService, private favService : FavoritesService,) {
     this.icon = "heart";
-    this.gifs = new Observable;
+    this.gifs$ = new Observable;
   }
 
   ngOnInit() {
     this.feedService.resetGifs;
-    this.gifs = this.feedService.loadFeed();
+    this.gifs$ = this.feedService.loadFeed();
   }
 
   scroll() {
-    this.gifs = this.feedService.loadFeed();
+    this.gifs$ = this.feedService.loadFeed();
   }
 
 }

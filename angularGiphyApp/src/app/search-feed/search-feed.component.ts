@@ -13,23 +13,23 @@ export class SearchFeedComponent implements OnInit {
 
   icon : string;
   query : string;
-  gifs : Observable<String[]>;
+  gifs$ : Observable<String[]>;
 
   constructor(private feedService : FeedService,
     private favService : FavoritesService,
     private route: ActivatedRoute) {
     this.query = this.route.snapshot.paramMap.get('query');
     this.icon = "heart";
-    this.gifs = new Observable;
+    this.gifs$ = new Observable;
   }
 
   ngOnInit() {
     this.feedService.resetGifs;
-    this.gifs = this.feedService.loadSearch(this.query);
+    this.gifs$ = this.feedService.loadSearch(this.query);
   }
 
   scroll() {
-    this.gifs = this.feedService.loadSearch(this.query);
+    this.gifs$ = this.feedService.loadSearch(this.query);
   }
 
 }
