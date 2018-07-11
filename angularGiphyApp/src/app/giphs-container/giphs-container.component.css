@@ -22,9 +22,10 @@ Only slight changes to adapt it to the project were made.
 	max-width: 480px;
 	max-height: 200px;
 	width: 48%;
-	background: #3085a3;
+	background: #fff;
 	text-align: center;
 	cursor: pointer;
+	z-index: 10;
 }
 
 .grid figure img {

@@ -1,14 +1,14 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a routerLink="/" id="pageName" class="navbar-brand">
+<nav class="navbar navbar-light bg-light pb-2 py-2">
+  <a routerLink="/" id="pageName" class="navbar-brand m-auto">
       FavGiphy&nbsp;
       <fa name="heart"></fa>
   </a>
-  <form (ngSubmit)="onSubmit()" #searchForm="ngForm">
-    <div class="form-group">
+  <form (ngSubmit)="onSubmit()" #searchForm="ngForm" class="d-flex flex-row m-auto">
+    <div class="form-group m-auto p-0">
         <input type="text" class="form-control" placeholder="Discover Amazing Giphs!" 
         required [(ngModel)]="query" name="searchQuery"/>
     </div>
-    <button type="submit" class="btn btn-outline-danger search-btn">
+    <button type="submit" class="btn btn-outline-danger search-btn align-right">
         Search
     </button>
   </form>
