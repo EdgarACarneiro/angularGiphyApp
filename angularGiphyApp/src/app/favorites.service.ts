@@ -10,15 +10,9 @@ export class FavoritesService {
   favorites : string[];
   favOffset : number;
 
-  bindedAdd : Function;
-  bindedRem : Function;
-
   constructor() {
     this.favorites = new Array<string>();
     this.favOffset = 0;
-
-    this.bindedAdd = this.addFav.bind(this);
-    this.bindedRem = this.removeFav.bind(this);
   }
 
   loadFavorites() {

@@ -11,9 +11,8 @@ export class GiphsContainerComponent implements OnInit {
 
   @Input() icon : string;
   @Input() gifs : String[];
-  // Name of binded function to be triggered (?) ou entao cenas com serviços, tenho de ver como fazer isto em angular
-  @Input() actionFnc : Function;
   @Output() loadMore = new EventEmitter();
+  @Output() gifAction = new EventEmitter<string>();
 
   THROTTLE_TIME : number = 400;
 
@@ -31,7 +30,7 @@ export class GiphsContainerComponent implements OnInit {
   }
 
   onGifClick(gif : string) {
-    this.actionFnc(gif);
+    this.gifAction.emit(gif);
   }
 
 }

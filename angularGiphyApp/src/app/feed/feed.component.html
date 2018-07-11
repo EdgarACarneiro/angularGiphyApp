@@ -1,6 +1,6 @@
 <app-giphs-container 
   [icon]="icon"
   [gifs]="gifs | async"
-  [actionFnc]="action"
-  (loadMore)="scroll($event)">
+  (loadMore)="scroll($event)"
+  (gifAction)="favService.addFav($event)">
 </app-giphs-container>
