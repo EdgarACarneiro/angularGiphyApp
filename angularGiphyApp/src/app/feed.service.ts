@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { GiphyAPIService } from './giphy-api.service';
-import { Observable } from 'rxjs';
-import 'rxjs/add/operator/concat';
+import { Observable, merge } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class FeedService {
   }
 
   loadFeed() {
-    let newGifs = this.gifs = this.api.getTrending(this.gifsOffset);
+    let newGifs = this.api.getTrending(this.gifsOffset);
     return this.updateGifs(newGifs);
   }
 
@@ -31,7 +31,7 @@ export class FeedService {
     if (this.gifs == null)
       this.gifs = newGifs;
     else
-      this.gifs.concat(newGifs);
+      this.gifs = merge(this.gifs, newGifs);
 
     this.gifsOffset += this.GIFS_STATIC_OFFSET;
     return this.gifs;

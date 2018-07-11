@@ -21,7 +21,6 @@ export class FavFeedComponent implements OnInit {
 
   ngOnInit() {
     this.gifs = this.favService.loadFavorites();
-    console.log(this.gifs);
   }
 
   scroll() {
