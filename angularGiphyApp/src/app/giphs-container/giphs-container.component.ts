@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
-import { fromEvent } from 'rxjs';
+import { interval, fromEvent } from 'rxjs';
+import 'rxjs/add/operator/throttle';
 
 @Component({
   selector: 'app-giphs-container',
@@ -14,10 +15,14 @@ export class GiphsContainerComponent implements OnInit {
   @Input() actionFnc : Function;
   @Output() loadMore = new EventEmitter();
 
+  THROTTLE_TIME : number = 400;
+
   constructor() { }
 
   ngOnInit() {
-    fromEvent(window, 'scroll').subscribe((event) => {
+    fromEvent(window, 'scroll')
+    .throttle(ev => interval(this.THROTTLE_TIME))
+    .subscribe((event) => {
       // Check if close to the end of the page
       if ((window.innerHeight + window.scrollY) < (document.body.scrollHeight - 600))
         return;
