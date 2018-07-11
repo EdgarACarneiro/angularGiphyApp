@@ -20,11 +20,10 @@ export class SearchFeedComponent implements OnInit {
     private route: ActivatedRoute) {
     this.query = this.route.snapshot.paramMap.get('query');
     this.icon = "heart";
-    this.gifs$ = new Observable;
   }
 
   ngOnInit() {
-    this.feedService.resetGifs;
+    this.feedService.resetGifs();
     this.gifs$ = this.feedService.loadSearch(this.query);
   }
 

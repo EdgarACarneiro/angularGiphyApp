@@ -15,11 +15,10 @@ export class FeedComponent implements OnInit {
 
   constructor(private feedService : FeedService, private favService : FavoritesService,) {
     this.icon = "heart";
-    this.gifs$ = new Observable;
   }
 
   ngOnInit() {
-    this.feedService.resetGifs;
+    this.feedService.resetGifs();
     this.gifs$ = this.feedService.loadFeed();
   }
 

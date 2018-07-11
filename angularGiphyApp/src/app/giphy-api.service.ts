@@ -16,34 +16,20 @@ export class GiphyAPIService {
     this.giphy = GphApiClient("8XADJBZWvzB75qIDyCpfWLbnE5otD7wG");
   }
 
-  getTrendingObs(offset : number): Observable<any> {
+  getTrending(offset: number): Observable<String[]> {
     return Observable.from(
-      this.giphy.trending("gifs", {"offset" : offset}) 
-    );
+      this.giphy.trending("gifs", { "offset": offset })
+    ).map((res: any) => res.data
+      .map(gif => gif.images.fixed_height_downsampled.gif_url));
   }
 
-  getTrending(offset : number): Observable<String[]> {
-    return this.getTrendingObs(offset).map(res => {
-      return res.data.map(gif => {
-        return gif.images.fixed_height_downsampled.gif_url;
-      });
-    });
-  }
-
-  getSearchedObs(query : string, offset : number): Observable<any> {
-    return Observable.from(
-      this.giphy.search("gifs", { "q" : query, "offset": offset })
-    );
-  }
-
-  getSearched(query : string, offset : number): Observable<String[]> {
+  getSearched(query: string, offset: number): Observable<String[]> {
     if (query.trim() === "")
       return;
 
-    return this.getSearchedObs(query, offset).map(res => {
-      return res.data.map(gif => {
-        return gif.images.fixed_height_downsampled.gif_url;
-      });
-    });
+    return Observable.from(
+      this.giphy.search("gifs", { "q": query, "offset": offset })
+    ).map((res: any) => res.data
+      .map(gif => gif.images.fixed_height_downsampled.gif_url));
   }
 }
