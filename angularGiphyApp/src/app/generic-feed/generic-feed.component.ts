@@ -13,7 +13,7 @@ export class GenericFeedComponent implements OnInit {
   gifsOffset: number;
   GIFS_STATIC_OFFSET: number = 25;
 
-  constructor(protected favService: FavoritesService, protected api: GiphyAPIService) {
+  constructor(public favService: FavoritesService, protected api: GiphyAPIService) {
     this.gifsOffset = 0;
     this.icon = "heart";
     this.gifs = [];

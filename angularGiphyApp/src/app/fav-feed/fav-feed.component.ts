@@ -11,7 +11,7 @@ export class FavFeedComponent implements OnInit {
   icon: string;
   gifs: String[];
 
-  constructor(private favService: FavoritesService) {
+  constructor(public favService: FavoritesService) {
     this.icon = "times";
   }
 
@@ -19,7 +19,7 @@ export class FavFeedComponent implements OnInit {
     this.gifs = this.favService.loadFavorites();
   }
 
-  scroll() {
+  loadMoreFav() {
     this.gifs = this.favService.loadFavorites();
   }
 

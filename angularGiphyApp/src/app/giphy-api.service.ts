@@ -27,6 +27,6 @@ export class GiphyAPIService {
     return Observable.from(
       this.http.get(`https://api.giphy.com/v1/gifs/search?api_key=${this.API_KEY}&q=${query}`)
     ).map((res: any) => res.data
-      .map(gif => gif.images.fixed_height_downsampled._url));
+      .map(gif => gif.images.fixed_height_downsampled.url));
   }
 }
