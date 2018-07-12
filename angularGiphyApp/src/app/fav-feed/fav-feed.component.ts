@@ -4,8 +4,7 @@ import { FavoritesService } from '../favorites.service';
 
 @Component({
   selector: 'app-fav-feed',
-  templateUrl: './fav-feed.component.html',
-  styleUrls: ['./fav-feed.component.css']
+  templateUrl: './fav-feed.component.html'
 })
 export class FavFeedComponent implements OnInit {
 

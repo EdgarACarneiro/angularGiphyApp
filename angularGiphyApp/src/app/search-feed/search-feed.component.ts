@@ -1,37 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { FeedService } from '../feed.service';
-import { Observable } from 'rxjs';
 import { FavoritesService } from '../favorites.service';
+import { GiphyAPIService } from '../giphy-api.service';
+import { GenericFeedComponent } from '../generic-feed/generic-feed.component';
 
 @Component({
   selector: 'app-search-feed',
-  templateUrl: './search-feed.component.html',
-  styleUrls: ['./search-feed.component.css']
+  templateUrl: './search-feed.component.html'
 })
-export class SearchFeedComponent implements OnInit {
+export class SearchFeedComponent extends GenericFeedComponent {
 
-  icon: string;
   query: string;
-  gifs$: Observable<String[]>;
 
-  constructor(private feedService: FeedService,
-    private favService: FavoritesService,
-    private route: ActivatedRoute) {
-    this.icon = "heart";
-
+  constructor(favService: FavoritesService, api: GiphyAPIService, private route: ActivatedRoute) {
+    super(favService, api);
   }
 
   ngOnInit() {
+    super.ngOnInit();
     this.route.paramMap.subscribe(params => {
       this.query = params.get('query');
-      this.feedService.resetGifs();
-      this.gifs$ = this.feedService.loadSearch(this.query);
+      this.loadMoreSearch();
     });
   }
 
-  scroll() {
-    this.gifs$ = this.feedService.loadSearch(this.query);
+  loadMoreSearch() {
+    this.api.getSearched(this.query, this.gifsOffset)
+      .subscribe(newGifs => this.updateGifs(newGifs));
   }
 
 }

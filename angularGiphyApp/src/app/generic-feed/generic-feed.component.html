@@ -1,3 +1,6 @@
-<p>
-  generic-feed works!
-</p>
+<app-giphs-container 
+  [icon]="icon"
+  [gifs]="gifs"
+  (loadMore)="loadMoreFeed($event)"
+  (gifAction)="favService.addFav($event)">
+</app-giphs-container>

@@ -15,13 +15,11 @@ export class GenericFeedComponent implements OnInit {
 
   constructor(protected favService: FavoritesService, protected api: GiphyAPIService) {
     this.gifsOffset = 0;
+    this.icon = "heart";
   }
 
   ngOnInit() {
-    this.resetGifs();
-  }
-
-  resetGifs() {
+    // Reseting gifs
     this.gifs = null;
     this.gifsOffset = 0;
   }

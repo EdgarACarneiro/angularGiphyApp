@@ -8,12 +8,12 @@ import 'rxjs/add/operator/mergeAll';
   providedIn: 'root'
 })
 export class FeedService {
-  GIFS_STATIC_OFFSET : number = 25;
+  GIFS_STATIC_OFFSET: number = 25;
 
-  gifs$ : Observable<String[]>;
-  gifsOffset : number;
+  gifs$: Observable<String[]>;
+  gifsOffset: number;
 
-  constructor(private api :  GiphyAPIService) {
+  constructor(private api: GiphyAPIService) {
     this.gifs$ = null;
     this.gifsOffset = 0;
   }
@@ -23,12 +23,12 @@ export class FeedService {
     return this.updateGifs(newGifs);
   }
 
-  loadSearch(query : string) {
+  loadSearch(query: string) {
     let newGifs = this.api.getSearched(query, this.gifsOffset);
     return this.updateGifs(newGifs);
   }
 
-  updateGifs(newGifs : Observable<String[]>) {
+  updateGifs(newGifs: Observable<String[]>) {
     if (this.gifs$ == null)
       this.gifs$ = newGifs;
     else
@@ -40,7 +40,7 @@ export class FeedService {
   }
 
   resetGifs() {
-    this.gifs$ = null;   
+    this.gifs$ = null;
     this.gifsOffset = 0;
   }
 }

@@ -5,16 +5,12 @@ import { GiphyAPIService } from '../giphy-api.service';
 
 @Component({
   selector: 'app-feed',
-  templateUrl: './feed.component.html',
-  styleUrls: ['./feed.component.css']
+  templateUrl: './feed.component.html'
 })
 export class FeedComponent extends GenericFeedComponent {
 
-  icon: string;
-
   constructor(favService: FavoritesService, api: GiphyAPIService) {
     super(favService, api);
-    this.icon = "heart";
   }
 
   ngOnInit() {
