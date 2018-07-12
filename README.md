@@ -10,4 +10,4 @@ Several improvements were also made, namely:
 - [x] Signaling of the current tab (Favorites or Feed).
 - [x] Fixed Navbar.
 
-Live demo available [here](https://EdgarACarneiro.github.io/angularGiphyApp/trending).
+Live demo available [here](https://EdgarACarneiro.github.io/angularGiphyApp/angularGiphyApp/trending).
