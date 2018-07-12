@@ -5,10 +5,10 @@ import { SearchFeedComponent } from './search-feed/search-feed.component';
   providedIn: 'root'
 })
 export class FavoritesService {
-  GIFS_STATIC_OFFSET : number = 25;
+  GIFS_STATIC_OFFSET: number = 25;
 
-  favorites : string[];
-  favOffset : number;
+  favorites: string[];
+  favOffset: number;
 
   constructor() {
     this.favorites = new Array<string>();
@@ -20,19 +20,18 @@ export class FavoritesService {
     if (typeof (Storage) !== "undefined") {
       let storageFavorites = localStorage.getItem("favorites");
       if (storageFavorites == null)
-          return;
+        return;
 
       this.favOffset += this.GIFS_STATIC_OFFSET;
       this.favorites = storageFavorites.split(",").slice(0, this.favOffset);
     } else {
-        // Sorry! No Web Storage support..
+      // Sorry! No Web Storage support..
     }
 
     return this.favorites;
   }
 
-  addFav(gif : string) {
-    console.log(this);
+  addFav(gif: string) {
     let index = this.favorites.indexOf(gif);
 
     // Meaning gif exists, so pushing it to the top
@@ -43,9 +42,7 @@ export class FavoritesService {
     localStorage.setItem("favorites", this.favorites.toString());
   }
 
-  removeFav(gif : string) {
-    console.log("being removed");
-    console.log(gif);
+  removeFav(gif: string) {
     let index = this.favorites.indexOf(gif);
 
     if (index > -1) {

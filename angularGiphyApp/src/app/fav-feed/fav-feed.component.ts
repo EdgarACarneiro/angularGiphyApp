@@ -8,10 +8,10 @@ import { FavoritesService } from '../favorites.service';
 })
 export class FavFeedComponent implements OnInit {
 
-  icon : string;
-  gifs : String[];
+  icon: string;
+  gifs: String[];
 
-  constructor(private favService : FavoritesService) {
+  constructor(private favService: FavoritesService) {
     this.icon = "times";
   }
 

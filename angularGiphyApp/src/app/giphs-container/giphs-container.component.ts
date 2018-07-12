@@ -9,27 +9,27 @@ import 'rxjs/add/operator/throttle';
 })
 export class GiphsContainerComponent implements OnInit {
 
-  @Input() icon : string;
-  @Input() gifs : String[];
+  @Input() icon: string;
+  @Input() gifs: String[];
   @Output() loadMore = new EventEmitter();
   @Output() gifAction = new EventEmitter<string>();
 
-  THROTTLE_TIME : number = 400;
+  THROTTLE_TIME: number = 600;
 
   constructor() { }
 
   ngOnInit() {
     fromEvent(window, 'scroll')
-    .throttle(ev => interval(this.THROTTLE_TIME))
-    .subscribe((event) => {
-      // Check if close to the end of the page
-      if ((window.innerHeight + window.scrollY) < (document.body.scrollHeight - 600))
-        return;
-      this.loadMore.emit();
-    });
+      .throttle(ev => interval(this.THROTTLE_TIME))
+      .subscribe((event) => {
+        // Check if close to the end of the page
+        if ((window.innerHeight + window.scrollY) < (document.body.scrollHeight - 600))
+          return;
+        this.loadMore.emit();
+      });
   }
 
-  onGifClick(gif : string) {
+  onGifClick(gif: string) {
     this.gifAction.emit(gif);
   }
 
