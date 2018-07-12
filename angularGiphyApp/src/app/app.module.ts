@@ -5,7 +5,6 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { FunctionalitiesComponent } from './functionalities/functionalities.component';
 import { SearchComponent } from './search/search.component';
 import { GiphsContainerComponent } from './giphs-container/giphs-container.component';
 import { FeedComponent } from './feed/feed.component';
@@ -28,11 +27,6 @@ const appRoutes: Routes = [
     component: FeedComponent,
     data: {title: 'FavGiphy: Trending'}
   },
-  { 
-    path: '',
-    redirectTo: '/trending',
-    pathMatch: 'full'
-  },
   {
     path: '**',
     redirectTo: '/trending'
@@ -43,7 +37,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    FunctionalitiesComponent,
     SearchComponent,
     GiphsContainerComponent,
     FeedComponent,

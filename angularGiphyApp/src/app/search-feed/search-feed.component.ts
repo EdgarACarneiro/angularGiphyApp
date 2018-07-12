@@ -11,20 +11,23 @@ import { FavoritesService } from '../favorites.service';
 })
 export class SearchFeedComponent implements OnInit {
 
-  icon : string;
-  query : string;
-  gifs$ : Observable<String[]>;
+  icon: string;
+  query: string;
+  gifs$: Observable<String[]>;
 
-  constructor(private feedService : FeedService,
-    private favService : FavoritesService,
+  constructor(private feedService: FeedService,
+    private favService: FavoritesService,
     private route: ActivatedRoute) {
-    this.query = this.route.snapshot.paramMap.get('query');
     this.icon = "heart";
+
   }
 
   ngOnInit() {
-    this.feedService.resetGifs();
-    this.gifs$ = this.feedService.loadSearch(this.query);
+    this.route.paramMap.subscribe(params => {
+      this.query = params.get('query');
+      this.feedService.resetGifs();
+      this.gifs$ = this.feedService.loadSearch(this.query);
+    });
   }
 
   scroll() {

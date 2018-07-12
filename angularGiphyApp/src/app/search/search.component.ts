@@ -18,8 +18,8 @@ export class SearchComponent implements OnInit {
   }
 
   onSubmit() {
-    //this.router.navigate(['/search', this.query]);
-    location.replace("/search/" + this.query);
+    this.router.navigate(['/search', this.query]);
+    //location.replace("/search/" + this.query);
   }
 
 }
