@@ -1,29 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { FeedService } from '../feed.service';
-import { Observable } from 'rxjs';
 import { FavoritesService } from '../favorites.service';
+import { GenericFeedComponent } from '../generic-feed/generic-feed.component';
+import { GiphyAPIService } from '../giphy-api.service';
 
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.css']
 })
-export class FeedComponent implements OnInit {
+export class FeedComponent extends GenericFeedComponent {
 
-  icon : string;
-  gifs$ : Observable<String[]>;
+  icon: string;
 
-  constructor(private feedService : FeedService, private favService : FavoritesService,) {
+  constructor(favService: FavoritesService, api: GiphyAPIService) {
+    super(favService, api);
     this.icon = "heart";
   }
 
   ngOnInit() {
-    this.feedService.resetGifs();
-    this.gifs$ = this.feedService.loadFeed();
+    super.ngOnInit();
+    this.loadMoreFeed();
   }
 
-  scroll() {
-    this.gifs$ = this.feedService.loadFeed();
+  loadMoreFeed() {
+    this.api.getTrending(this.gifsOffset)
+      .subscribe(newGifs => this.updateGifs(newGifs));
   }
 
 }
