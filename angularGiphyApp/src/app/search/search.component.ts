@@ -9,9 +9,9 @@ import { Router } from '@angular/router';
 })
 export class SearchComponent implements OnInit {
 
-  query : string;
+  query: string;
 
-  constructor(private location: Location, private router : Router) {}
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.query = '';
@@ -19,7 +19,6 @@ export class SearchComponent implements OnInit {
 
   onSubmit() {
     this.router.navigate(['/search', this.query]);
-    //location.replace("/search/" + this.query);
   }
 
 }
