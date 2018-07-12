@@ -16,21 +16,18 @@ export class GenericFeedComponent implements OnInit {
   constructor(protected favService: FavoritesService, protected api: GiphyAPIService) {
     this.gifsOffset = 0;
     this.icon = "heart";
+    this.gifs = [];
   }
 
   ngOnInit() {
     // Reseting gifs
-    this.gifs = null;
+    this.gifs = [];
     this.gifsOffset = 0;
   }
 
   updateGifs(newGifs: String[]) {
     this.gifsOffset += this.GIFS_STATIC_OFFSET;
-
-    if (this.gifs == null)
-      this.gifs = newGifs;
-    else
-      this.gifs = this.gifs.concat(newGifs);
+    this.gifs = this.gifs.concat(newGifs);
   }
 
 }

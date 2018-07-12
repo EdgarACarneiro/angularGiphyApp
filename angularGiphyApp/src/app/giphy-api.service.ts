@@ -1,26 +1,23 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/from';
-
-var GphApiClient = require('giphy-js-sdk-core');
 
 @Injectable({
   providedIn: 'root'
 })
 export class GiphyAPIService {
 
-  giphy: any;
+  API_KEY: string = "8XADJBZWvzB75qIDyCpfWLbnE5otD7wG";
 
-  constructor() {
-    this.giphy = GphApiClient("8XADJBZWvzB75qIDyCpfWLbnE5otD7wG");
-  }
+  constructor(private http: HttpClient) { }
 
   getTrending(offset: number): Observable<String[]> {
     return Observable.from(
-      this.giphy.trending("gifs", { "offset": offset })
+      this.http.get(`https://api.giphy.com/v1/gifs/trending?api_key=${this.API_KEY}`)
     ).map((res: any) => res.data
-      .map(gif => gif.images.fixed_height_downsampled.gif_url));
+      .map(gif => gif.images.fixed_height_downsampled.url));
   }
 
   getSearched(query: string, offset: number): Observable<String[]> {
@@ -28,8 +25,8 @@ export class GiphyAPIService {
       return;
 
     return Observable.from(
-      this.giphy.search("gifs", { "q": query, "offset": offset })
+      this.http.get(`https://api.giphy.com/v1/gifs/search?api_key=${this.API_KEY}&q=${query}`)
     ).map((res: any) => res.data
-      .map(gif => gif.images.fixed_height_downsampled.gif_url));
+      .map(gif => gif.images.fixed_height_downsampled._url));
   }
 }

@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
@@ -47,10 +48,10 @@ const appRoutes: Routes = [
   ],
   imports: [
     RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      appRoutes
     ),
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     AngularFontAwesomeModule
   ],
