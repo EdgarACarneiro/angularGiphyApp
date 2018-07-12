@@ -1,15 +1,16 @@
-<base href="/">
-<app-search></app-search>
-<div class="tabs mt-4">
-    <a routerLink="/trending" routerLinkActive="active" class="tab ml-5">
-        <button class="btn button btn-outline-danger">
-            Feed
-        </button>
-    </a>
-    <a routerLink="/favorites" routerLinkActive="active" class="tab mr-5">
-        <button class="btn button btn-outline-danger">
-            Favorites
-        </button>
-    </a>
-</div>
-<router-outlet></router-outlet>
+<body>
+    <app-search></app-search>
+    <div class="tabs mt-4 mb-5">
+        <a routerLink="/trending" routerLinkActive="active" class="tab ml-5">
+            <button class="btn button btn-outline-danger">
+                Feed
+            </button>
+        </a>
+        <a routerLink="/favorites" routerLinkActive="active" class="tab mr-5">
+            <button class="btn button btn-outline-danger">
+                Favorites
+            </button>
+        </a>
+    </div>
+    <router-outlet></router-outlet>
+</body>

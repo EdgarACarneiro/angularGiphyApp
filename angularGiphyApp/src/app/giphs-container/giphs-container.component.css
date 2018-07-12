@@ -7,7 +7,7 @@ Only slight changes to adapt it to the project were made.
 .grid {
 	position: relative;
 	margin: 0 auto;
-	padding: 1em 0 4em;
+	padding: 0;
 	max-width: 1000px;
 	list-style: none;
 	text-align: center;
