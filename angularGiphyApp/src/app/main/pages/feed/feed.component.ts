@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FavoritesService } from '../favorites.service';
-import { GenericFeedComponent } from '../generic-feed/generic-feed.component';
-import { GiphyAPIService } from '../giphy-api.service';
+import { GenericFeedComponent } from '../../components/generic-feed/generic-feed.component';
+import { FavoritesService } from '../../services/favorites/favorites.service';
+import { GiphyAPIService } from '../../services/giphy-api/giphy-api.service';
 
 @Component({
   selector: 'app-feed',

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { SearchFeedComponent } from './search-feed/search-feed.component';
 
 @Injectable({
   providedIn: 'root'
