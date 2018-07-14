@@ -15,7 +15,7 @@ export class GiphyAPIService {
 
   getTrending(offset: number): Observable<String[]> {
     return Observable.from(
-      this.http.get(`https://api.giphy.com/v1/gifs/trending?api_key=${this.API_KEY}`)
+      this.http.get(`https://api.giphy.com/v1/gifs/trending?api_key=${this.API_KEY}&offset=${offset}`)
     ).map((res: any) => res.data
       .map(gif => gif.images.fixed_height_downsampled.url));
   }
@@ -25,7 +25,7 @@ export class GiphyAPIService {
       return;
 
     return Observable.from(
-      this.http.get(`https://api.giphy.com/v1/gifs/search?api_key=${this.API_KEY}&q=${query}`)
+      this.http.get(`https://api.giphy.com/v1/gifs/search?api_key=${this.API_KEY}&q=${query}&offset=${offset}`)
     ).map((res: any) => res.data
       .map(gif => gif.images.fixed_height_downsampled.url));
   }
