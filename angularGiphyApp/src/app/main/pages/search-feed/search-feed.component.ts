@@ -17,7 +17,6 @@ export class SearchFeedComponent extends GenericFeedComponent {
   }
 
   ngOnInit() {
-    super.ngOnInit();
     this.route.paramMap.subscribe(params => {
       super.ngOnInit();
       this.query = params.get('query');
